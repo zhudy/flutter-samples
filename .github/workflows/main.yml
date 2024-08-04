@@ -9,8 +9,8 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *" # Every day at midnight
+  #schedule:
+  #  - cron: "0 0 * * *" # Every day at midnight
 
 defaults:
   run:
@@ -20,7 +20,7 @@ jobs:
   flutter-tests:
     name: Test Flutter ${{ matrix.flutter_version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    if: github.repository == 'flutter/samples'
+    #if: github.repository == 'flutter/samples'
     strategy:
       fail-fast: false
       matrix:
@@ -48,7 +48,7 @@ jobs:
         working-directory: web/samples_index
   android-build:
     runs-on: ubuntu-latest
-    if: github.repository == 'flutter/samples'
+    #if: github.repository == 'flutter/samples'
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
       - uses: actions/setup-java@99b8673ff64fbf99d8d325f52d9a5bdedb8483e9
@@ -61,7 +61,7 @@ jobs:
       - run: ./tool/android_ci_script.sh
   ios-build:
     runs-on: macos-latest
-    if: github.repository == 'flutter/samples'
+    #if: github.repository == 'flutter/samples'
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
       - uses: actions/setup-java@99b8673ff64fbf99d8d325f52d9a5bdedb8483e9
